@@ -38,15 +38,39 @@ export const getAccountById = async (req, res, next) => {
     next(error);
   }
 };
+export const addNewAccount = async (req, res, next) => {
+  const { name, first_name, email, slogan } = req.body;
+
+  try {
+    // Erstelle ein neues Account-Objekt mit den übergebenen Daten
+    const newAccount = new Account({
+      name,
+      first_name,
+      email,
+      slogan,
+    });
+
+    // Speichere das neue Konto in der Datenbank
+    const savedAccount = await newAccount.save();
+
+    // Sende eine Erfolgsantwort zurück
+    if (!addNewAccount) {
+      throw { statusCode: 404, message: "account not found" };
+    }
+    res.json(updateAccount);
+  } catch (error) {
+    next(error);
+  }
+};
 
 // Funktion, um ein Konto zu aktualisieren
 
 export const updateAccount = async (req, res, next) => {
   const { id } = req.params; // Die ID des zu aktualisierenden Kontos aus den Anfrageparametern erhalten
-  const { name, first_name, email, slogan } = req.body;  // Die zu aktualisierenden Daten aus dem Anfragekörper erhalten
+  const { name, first_name, email, slogan } = req.body; // Die zu aktualisierenden Daten aus dem Anfragekörper erhalten
 
-  try { 
-     // Versuche, das Konto anhand seiner ID zu aktualisieren
+  try {
+    // Versuche, das Konto anhand seiner ID zu aktualisieren
     const updateAccount = await Account.findByIdAndUpdate(
       id,
       { name, first_name, email, slogan }, // Die zu aktualisierenden Daten
