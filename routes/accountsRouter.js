@@ -6,7 +6,7 @@ const accountsRouter = express.Router();
 accountsRouter
 .route("/")
 .get(accountController.getAllAccounts)
-.post(accountController.addAccount);
+.post(accountController.addNewAccount);
 
 accountsRouter
 .route("/:id")
@@ -14,6 +14,6 @@ accountsRouter
 .put(accountController.updateAccount)
 .delete(accountController.deleteAccount);
 
-accountsRouter.patch("/id/addTag", accountController.addAccount);
+accountsRouter.patch("/id/addTag", accountController.addNewAccount);
 
 export default accountsRouter;
