@@ -5,7 +5,7 @@ export const getAllAccounts = async (req, res, next) => {
   try {
     // Versuche, alle Konten aus der Datenbank abzurufen
     const accountController = await Account.find();
-    // Überprüfe, ob es keine Konten gibt
+    // Überprüfe, ob es keine Konten gibt. 
     if (!Account - length) {
       // Wirft einen Fehler mit dem Statuscode 404 und einer Fehlermeldung
       throw { statusCode: 404, message: "account not found" };
