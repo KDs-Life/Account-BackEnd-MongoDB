@@ -3,7 +3,7 @@ import Account from "../models/Account.js";
 // Definieren einer Funktion, um alle Konten abzurufen
 export const getAllAccounts = async (req, res, next) => {
   try {
-    // Versuche, alle Konten aus der Datenbank abzurufen
+    // Versuche, alle Konten aus der Datenbank abzurufen test test 
     const accountController = await Account.find();
     // Überprüfe, ob es keine Konten gibt. 
     if (!Account - length) {
